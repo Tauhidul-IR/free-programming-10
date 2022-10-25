@@ -12,10 +12,10 @@ const Courses = () => {
             <h1>All Courses</h1>
             <div className='my-4'>
                 <Row>
-                    <Col lg='3'>
+                    <Col lg='3' >
                         {
-                            allCourses.map(courses => <p key={courses.id}>
-                                <Link to={`/courses/${courses.id}`}>{courses.title}</Link>
+                            allCourses.map(courses => <p className='text-start ' key={courses.id}>
+                                <Link className='text-decoration-none' to={`/courses/${courses.id}`}>{courses.title}</Link>
                             </p>)
                         }
                     </Col>

@@ -12,7 +12,7 @@ const ShowAllCourses = ({ courses }) => {
     const info = details.slice(0, 110);
     console.log(info)
     return (
-        <CardGroup className='col-4 mb-2'>
+        <CardGroup className='col-12 col-sm-6 col-lg-4 mb-2'>
             <Card className=''>
                 <Card.Img className='' variant="top" src={image_url} />
                 <Card.Body>
