@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container, Image, Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaUserAlt } from 'react-icons/fa';
+import { FaUserAlt, FaLayerGroup } from 'react-icons/fa';
 
 const Header = () => {
     const user = 'dfggfd';
@@ -12,10 +12,15 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect className='' expand="lg" bg="dark" variant="light">
                 <Container>
-                    <Navbar.Brand> <Link className='text-decoration-none' to={'/'}>Free-Programming</Link></Navbar.Brand>
+                    <Navbar.Brand>
+                        <FaLayerGroup className='text-light fs-3'></FaLayerGroup>
+
+                        <Link className='text-decoration-none' to={'/'}>Free-Programming</Link>
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
+                            <Link className='text-decoration-none ms-3' to={'/'}>Home</Link>
                             <Link className='text-decoration-none ms-3' to={'/faq'}>FAQ</Link>
                             <Link className='text-decoration-none ms-3' to={'/courses'}>Courses</Link>
                             <Link className='text-decoration-none ms-3' to={'/blogs'}>Blogs</Link>
