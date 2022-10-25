@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaUserAlt, FaLayerGroup } from 'react-icons/fa';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Header = () => {
-    const user = 'dfggfd';
-    const handleLogout = () => {
+    const { user, logOut } = useContext(AuthContext)
 
+    const handleLogout = () => {
+        logOut()
+            .then(result => {
+            })
+            .catch(error => console.error(error))
     }
     return (
         <div>
@@ -34,7 +39,7 @@ const Header = () => {
                             <Link href="#deets" className='me-4 text-decoration-none'>
                                 {
                                     user?.uid ? <>
-                                        <span> {user?.displayName}</span>
+                                        <span className='text-light'> {user?.displayName}</span>
                                         <Button className='text-decoration-none' onClick={handleLogout}>Log Out</Button>
                                     </> :
                                         <>

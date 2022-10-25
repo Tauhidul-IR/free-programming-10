@@ -7,6 +7,8 @@ import FAQ from '../FAQ/FAQ';
 import Home from '../Home/Home';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
+import SingleCourse from '../singleCourse/SingleCourse';
+import Terms from '../Terms/Terms';
 
 export const routes = createBrowserRouter([
     {
@@ -19,7 +21,13 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
-                element: <Courses></Courses>
+                element: <Courses></Courses>,
+                loader: () => fetch(`http://localhost:5000/courses`)
+            },
+            {
+                path: '/courses/:id',
+                element: <SingleCourse></SingleCourse>,
+                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
             },
             {
                 path: '/blogs',
@@ -36,6 +44,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/terms',
+                element: <Terms></Terms>
             },
         ]
     }

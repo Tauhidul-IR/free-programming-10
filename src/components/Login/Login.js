@@ -3,10 +3,22 @@ import { useContext } from 'react';
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { Button, Col, Form, ListGroup, Row } from 'react-bootstrap';
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
+    const [error, setError] = useState('')
+    const { signIn, setLoading } = useContext(AuthContext);
+
+
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    const navigate = useNavigate();
+
     const { providerLogin } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider();
 
@@ -34,11 +46,47 @@ const Login = () => {
     }
 
 
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password)
+        // 
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(result);
+                form.reset();
+                setError('')
+                // navigate(from, { replace: true })
+
+
+                //for verified login-->
+                if (user.emailVerified) {
+                    navigate(from, { replace: true })
+                }
+                else {
+                    toast.error("please verify email first")
+                }
+
+                //-------<-
+            })
+            .catch(error => {
+                console.error(error);
+                setError(error.message)
+            })
+            .finally(() => {
+                setLoading(false);
+            })
+
+    }
+
 
 
 
     return (
-        <div className='container'>
+        <div onSubmit={handleSubmit} className='container'>
             <Row>
                 <Col sm='6' lg='6' className=''>
                     <Form className=' my-5'>
@@ -57,7 +105,7 @@ const Login = () => {
                             Submit
                         </Button>
                         <Form.Text className="text-danger">
-                            {/* {error} */}
+                            {error}
                         </Form.Text>
                         <h4>If you are a new user!!!</h4>
                         <h4> Please create a account then login...</h4>
