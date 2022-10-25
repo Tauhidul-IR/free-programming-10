@@ -1,9 +1,42 @@
 import React from 'react';
+import { useContext } from 'react';
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { Button, Col, Form, ListGroup, Row } from 'react-bootstrap';
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { providerLogin } = useContext(AuthContext)
+    const googleProvider = new GoogleAuthProvider();
+
+    const githubProvider = new GithubAuthProvider();
+
+
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+
+            })
+            .catch(e => console.error(e))
+    }
+    const handleGithubSIgnIn = () => {
+        providerLogin(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+
+            })
+            .catch(e => console.error(e))
+    }
+
+
+
+
+
     return (
         <div className='container'>
             <Row>
@@ -35,8 +68,8 @@ const Login = () => {
                 <Col sm='6' lg='6' className=' my-5'>
                     <h3>LogIn With</h3>
                     <ListGroup>
-                        <ListGroup.Item className='mb-3'><Link><FaGithub /> Github</Link></ListGroup.Item>
-                        <ListGroup.Item className='mb-3'><Link><FaGoogle /> Google</Link></ListGroup.Item>
+                        <ListGroup.Item className='mb-3'><Link onClick={handleGithubSIgnIn}><FaGithub /> Github</Link></ListGroup.Item>
+                        <ListGroup.Item className='mb-3'><Link onClick={handleGoogleSignIn}><FaGoogle /> Google</Link></ListGroup.Item>
                     </ListGroup>
                 </Col>
             </Row>
