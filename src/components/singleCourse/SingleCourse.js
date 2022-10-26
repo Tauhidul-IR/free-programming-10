@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
@@ -21,7 +21,7 @@ const SingleCourse = () => {
                         <p>Price : ${price}</p>
                         <p>Rating : {rating.badge}</p>
                     </div>
-                    <Button variant="primary">Go Premium</Button>
+                    <Button variant="primary"><Link to={'/premium'} className='text-light'>Go Premium</Link></Button>
                 </Card.Body>
             </Card>
         </div>

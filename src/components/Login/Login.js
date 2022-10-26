@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { Button, Col, Form, ListGroup, Row } from 'react-bootstrap';
-import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { useState } from 'react';
@@ -58,17 +58,17 @@ const Login = () => {
                 const user = result.user;
                 console.log(result);
                 form.reset();
-                setError('')
-                // navigate(from, { replace: true })
+                setError('');
+                navigate(from, { replace: true });
 
 
                 //for verified login-->
-                if (user.emailVerified) {
-                    navigate(from, { replace: true })
-                }
-                else {
-                    toast.error("please verify email first")
-                }
+                // if (user.emailVerified) {
+                //     navigate(from, { replace: true })
+                // }
+                // else {
+                //     toast.error("please verify email first")
+                // }
 
                 //-------<-
             })

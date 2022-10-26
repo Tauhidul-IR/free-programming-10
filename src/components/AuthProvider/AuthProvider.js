@@ -14,29 +14,30 @@ const AuthProvider = ({ children }) => {
 
 
     const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
 
     const signIn = (email, password) => {
-        // setLoading(true)
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     useEffect(() => {
-        const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log('user-----', currentUser)
             setUser(currentUser);
-
             setLoading(false)
         })
         return () => {
-            unsubcribe()
+            unsubscribe()
         }
     }, [])
 
 
     const providerLogin = (provider) => {
+        setLoading(true)
         return signInWithPopup(auth, provider)
     }
 
@@ -58,7 +59,8 @@ const AuthProvider = ({ children }) => {
         createUser,
         user,
         signIn,
-        logOut
+        logOut,
+        loading
 
     }
     return (

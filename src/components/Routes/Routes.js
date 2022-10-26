@@ -6,6 +6,8 @@ import Courses from '../Courses/Courses';
 import FAQ from '../FAQ/FAQ';
 import Home from '../Home/Home';
 import Login from '../Login/Login';
+import Premium from '../Premium/Premium';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Register from '../Register/Register';
 import SingleCourse from '../singleCourse/SingleCourse';
 import Terms from '../Terms/Terms';
@@ -48,6 +50,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/terms',
                 element: <Terms></Terms>
+            },
+            {
+                path: '/premium',
+                element: <PrivateRoute><Premium></Premium></PrivateRoute>
             },
         ]
     }
