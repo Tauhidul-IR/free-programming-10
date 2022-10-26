@@ -4,11 +4,10 @@ import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-// import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
     const [error, setError] = useState('');
-    const { user, createUser } = useContext(AuthContext)
+    const { user, createUser, updateUserProfile } = useContext(AuthContext)
     const [accepted, setAccepted] = useState(false)
 
 
@@ -27,9 +26,7 @@ const Register = () => {
                 console.log(user);
                 setError('');
                 form.reset();
-                // handleUpdateUserProfile(name, photoURL);
-                // handleEmailVerification();
-                // toast.success('please verify email before login')
+                handleUpdateUserProfile(name, photoURL);
             })
             .catch(error => {
                 console.error(error);
@@ -39,6 +36,16 @@ const Register = () => {
     }
     const handleAccepted = event => {
         setAccepted(event.target.checked)
+    }
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(e => console.error(e))
     }
 
 
@@ -71,13 +78,16 @@ const Register = () => {
                     label={<>Accept <Link to={'/terms'}> Terms and condition</Link></>} />
             </Form.Group>
 
+
             <Button variant="primary" type="submit" disabled={!accepted}>
                 Submit
             </Button>
             <Form.Text className="text-danger">
                 {error}
             </Form.Text>
+            <h5>Already have an account.. <Link to={'/login'}>Login</Link></h5>
         </Form>
+
     );
 };
 
