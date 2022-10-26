@@ -31,6 +31,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                navigate(from, { replace: true });
                 toast.success("login Successfully")
 
             })
@@ -41,6 +42,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                navigate(from, { replace: true });
                 toast.success("login Successfully")
 
             })

@@ -24,12 +24,12 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: () => fetch(`http://localhost:5000/courses`)
+                loader: () => fetch(`https://free-programming-server.vercel.app/courses`)
             },
             {
                 path: '/courses/:id',
                 element: <SingleCourse></SingleCourse>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://free-programming-server.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/blogs',
@@ -54,7 +54,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses/premium/:id',
                 element: <PrivateRoute><Premium></Premium></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/premium/${params.id}`)
+                loader: ({ params }) => fetch(`https://free-programming-server.vercel.app/courses/premium/${params.id}`)
             },
         ]
     },
