@@ -26,15 +26,15 @@ const Blogs = () => {
                     <p className='text-lg'>Ans..Usually, authentication by a server entails the use of a user name and password. Other ways to authenticate can be through cards, retina scans, voice recognition, and fingerprints.</p>
                 </div>
                 <div className='mt-5'>
-                    <h2 className='text-xl'>3. How does the private route work?</h2>
+                    <h2 className='text-xl'>4. How does the private route work?</h2>
                     <p className='text-lg'>Ans..The react private route component renders child components ( children ) if the user is logged in. If not logged in the user is redirected to the /login page with the return url passed in the location state property.</p>
                 </div>
                 <div className='mt-5'>
-                    <h2 className='text-xl'>3. What is Node?</h2>
+                    <h2 className='text-xl'>5. What is Node?</h2>
                     <p className='text-lg'>Ans..As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications. In the following "hello world" example, many connections can be handled concurrently. Upon each connection, the callback is fired, but if there is no work to be done, Node.js will sleep.</p>
                 </div>
                 <div className='mt-5'>
-                    <h2 className='text-xl'>3. How does Node work?</h2>
+                    <h2 className='text-xl'>6. How does Node work?</h2>
                     <p className='text-lg'>Ans..Node.js is an open-source backend javascript runtime environment. It is a used as backend service where javascript works on the server-side of the application. This way javascript is used on both frontend and backend. Node.js runs on chrome v8 engine which converts javascript code into machine code, it is highly scalable, lightweight, fast, and data-intensive.</p>
                 </div>
 

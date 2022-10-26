@@ -15,7 +15,7 @@ const SingleCourse = () => {
     return (
         <div className='container text-center' >
 
-            <Card className='mx-auto' style={{ width: '70%' }}>
+            <Card className='mx-auto' style={{ width: '80%' }}>
                 <Card.Img variant="top" src={image_url} />
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
