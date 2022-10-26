@@ -21,7 +21,7 @@ const SingleCourse = () => {
                         <p>Price : ${price}</p>
                         <p>Rating : {rating.badge}</p>
                     </div>
-                    <Button variant="primary"><Link to={'/premium'} className='text-light'>Go Premium</Link></Button>
+                    <Button variant="primary"><Link to={`/courses/premium/${id}`} className='text-light'>Go Premium</Link></Button>
                 </Card.Body>
             </Card>
         </div>
