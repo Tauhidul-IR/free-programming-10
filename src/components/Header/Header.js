@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
-import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Image, Nav, Navbar, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaUserAlt, FaLayerGroup } from 'react-icons/fa';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+
+import "bootstrap/dist/css/bootstrap.css";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -13,6 +16,10 @@ const Header = () => {
             })
             .catch(error => console.error(error))
     }
+
+    const renderTooltip = props => (
+        <Tooltip {...props}>{user?.displayName}</Tooltip>
+    );
     return (
         <div>
             <Navbar collapseOnSelect className='' expand="lg" bg="dark" variant="light">
@@ -50,10 +57,13 @@ const Header = () => {
                             </Link>
                             <Link to={'/profile'}>
                                 {user?.photoURL ?
-                                    <Image roundedCircle
-                                        className='me-2'
-                                        src={user?.photoURL}
-                                        style={{ height: '40px' }}></Image>
+                                    <OverlayTrigger placement="bottom" overlay={renderTooltip}>
+                                        <Image roundedCircle
+                                            className='me-2'
+                                            src={user?.photoURL}
+                                            style={{ height: '40px' }}></Image>
+                                    </OverlayTrigger>
+
                                     : <FaUserAlt></FaUserAlt>
 
                                 }
@@ -67,3 +77,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
