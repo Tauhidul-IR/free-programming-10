@@ -31,6 +31,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                toast.success("login Successfully")
 
             })
             .catch(e => console.error(e))
@@ -40,6 +41,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                toast.success("login Successfully")
 
             })
             .catch(e => console.error(e))
@@ -59,6 +61,7 @@ const Login = () => {
                 // console.log(user);
                 form.reset();
                 setError('');
+                toast.success("login Successfully")
                 navigate(from, { replace: true });
             })
             .catch(error => {
