@@ -6,10 +6,28 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 
 import "bootstrap/dist/css/bootstrap.css";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import { useState } from 'react';
+
+
+
+
 
 const Header = () => {
+    const [theme, setTheme] = useState(false)
     const { user, logOut } = useContext(AuthContext)
 
+    //set theme
+    const handleTheme = () => {
+        if (theme === false) {
+
+            setTheme(true)
+        }
+        else {
+            setTheme(false)
+        }
+    }
+
+    //Logout part
     const handleLogout = () => {
         logOut()
             .then(result => {
@@ -17,6 +35,7 @@ const Header = () => {
             .catch(error => console.error(error))
     }
 
+    //Tooltip part
     const renderTooltip = props => (
         <Tooltip {...props}>{user?.displayName}</Tooltip>
     );
@@ -33,17 +52,23 @@ const Header = () => {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Link className='text-decoration-none ms-3' to={'/'}>Home</Link>
-                            <Link className='text-decoration-none ms-3' to={'/faq'}>FAQ</Link>
                             <Link className='text-decoration-none ms-3' to={'/courses'}>Courses</Link>
+                            <Link className='text-decoration-none ms-3' to={'/faq'}>FAQ</Link>
                             <Link className='text-decoration-none ms-3' to={'/blogs'}>Blogs</Link>
-
+                            {/* theme part */}
                             {
-                                <Link className='text-decoration-none ms-3' href="#">Dark</Link>
+
+                                theme ?
+                                    <Link onClick={handleTheme} className='text-decoration-none ms-3' href="#">light</Link>
+                                    :
+                                    <Link onClick={handleTheme} className='text-decoration-none ms-3' href="#">dark</Link>
                             }
+                            {/* theme part end*/}
                         </Nav>
 
                         <Nav className=''>
                             <Link href="#deets" className='me-4 text-decoration-none'>
+                                {/* login & Register */}
                                 {
                                     user?.uid ? <>
                                         <span className='text-light me-3'> {user?.displayName}</span>
@@ -54,7 +79,9 @@ const Header = () => {
                                             <Link className='text-decoration-none' to={'/register'}>Register</Link>
                                         </>
                                 }
+                                {/* login & Register end */}
                             </Link>
+                            {/* user profile */}
                             <Link to={'/profile'}>
                                 {user?.photoURL ?
                                     <OverlayTrigger placement="bottom" overlay={renderTooltip}>
@@ -68,6 +95,7 @@ const Header = () => {
 
                                 }
                             </Link>
+                            {/* user profile end*/}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
