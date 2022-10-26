@@ -5,12 +5,14 @@ import Card from 'react-bootstrap/Card';
 
 const SingleCourse = () => {
     const course = useLoaderData()
-    console.log(course)
+
+    // console.log(course)
     const { image_url, title, id, mentor, rating, price, details } = course;
+
     return (
         <div className='container text-center' >
 
-            <Card className='mx-auto' style={{ width: '50%' }}>
+            <Card className='mx-auto' style={{ width: '70%' }}>
                 <Card.Img variant="top" src={image_url} />
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
@@ -19,7 +21,7 @@ const SingleCourse = () => {
                     </Card.Text>
                     <div className='text-left'>
                         <p>Price : ${price}</p>
-                        <p>Rating : {rating.badge}</p>
+                        <p>Rating : {rating?.badge}</p>
                     </div>
                     <Button variant="primary"><Link to={`/courses/premium/${id}`} className='text-light'>Go Premium</Link></Button>
                 </Card.Body>

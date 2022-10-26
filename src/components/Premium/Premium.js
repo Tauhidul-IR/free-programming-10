@@ -6,7 +6,7 @@ const Premium = () => {
     const preCourse = useLoaderData();
 
     const { image_url, title, id, mentor, rating, price, details } = preCourse;
-    console.log(preCourse)
+    // console.log(preCourse)
     return (
         <div className='container text-center' >
 
@@ -19,7 +19,7 @@ const Premium = () => {
                     </Card.Text>
                     <div className='text-left'>
                         <p>Price : ${price}</p>
-                        <p>Rating : {rating.badge}</p>
+                        <p>Rating : {rating?.badge}</p>
                         <p>Mentor : {mentor?.name}</p>
                         <img style={{ height: '40px' }} src={mentor?.img} alt="" />
                     </div>

@@ -52,25 +52,14 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
-        // 
+        //  signIn
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(result);
+                // console.log(user);
                 form.reset();
                 setError('');
                 navigate(from, { replace: true });
-
-
-                //for verified login-->
-                // if (user.emailVerified) {
-                //     navigate(from, { replace: true })
-                // }
-                // else {
-                //     toast.error("please verify email first")
-                // }
-
-                //-------<-
             })
             .catch(error => {
                 console.error(error);
@@ -113,6 +102,7 @@ const Login = () => {
                     </Form>
                 </Col>
 
+                {/* google and github login */}
                 <Col sm='6' lg='6' className=' my-5'>
                     <h3>LogIn With</h3>
                     <ListGroup>

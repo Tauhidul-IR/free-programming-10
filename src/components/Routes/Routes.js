@@ -57,5 +57,6 @@ export const routes = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/courses/premium/${params.id}`)
             },
         ]
-    }
+    },
+    { path: '*', element: <div>Page not Found</div> }
 ])

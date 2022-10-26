@@ -82,7 +82,7 @@ const Header = () => {
                                 {/* login & Register end */}
                             </Link>
                             {/* user profile */}
-                            <Link to={'/profile'}>
+                            <Link>
                                 {user?.photoURL ?
                                     <OverlayTrigger placement="bottom" overlay={renderTooltip}>
                                         <Image roundedCircle
