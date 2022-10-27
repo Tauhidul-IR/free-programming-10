@@ -73,6 +73,21 @@ const Header = () => {
                                     user?.uid ? <>
                                         <span className='text-light me-3'> {user?.displayName}</span>
                                         <Button className='text-decoration-none' onClick={handleLogout}>Log Out</Button>
+                                        {
+                                            <Link>
+                                                {user?.photoURL ?
+                                                    <OverlayTrigger placement="bottom" overlay={renderTooltip}>
+                                                        <Image roundedCircle
+                                                            className='ms-2'
+                                                            src={user?.photoURL}
+                                                            style={{ height: '40px' }}></Image>
+                                                    </OverlayTrigger>
+
+                                                    : <FaUserAlt className='ms-3'></FaUserAlt>
+
+                                                }
+                                            </Link>
+                                        }
                                     </> :
                                         <>
                                             <Link className='text-decoration-none me-4' to={'/login'}>Login</Link>
@@ -81,21 +96,6 @@ const Header = () => {
                                 }
                                 {/* login & Register end */}
                             </Link>
-                            {/* user profile */}
-                            <Link>
-                                {user?.photoURL ?
-                                    <OverlayTrigger placement="bottom" overlay={renderTooltip}>
-                                        <Image roundedCircle
-                                            className='me-2'
-                                            src={user?.photoURL}
-                                            style={{ height: '40px' }}></Image>
-                                    </OverlayTrigger>
-
-                                    : <FaUserAlt></FaUserAlt>
-
-                                }
-                            </Link>
-                            {/* user profile end*/}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
