@@ -7,7 +7,7 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState('');
-    const { user, createUser, updateUserProfile } = useContext(AuthContext)
+    const { user, createUser, updateUserProfile, verifyEmail } = useContext(AuthContext)
     const [accepted, setAccepted] = useState(false)
 
 
@@ -27,6 +27,10 @@ const Register = () => {
                 setError('');
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
+                verifyEmail()
+                    .then(
+                        alert('verify you Email')
+                    )
             })
             .catch(error => {
                 console.error(error);
