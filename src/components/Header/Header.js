@@ -17,15 +17,15 @@ const Header = () => {
     const { user, logOut } = useContext(AuthContext)
 
     //set theme
-    const handleTheme = () => {
-        if (theme === false) {
+    // const handleTheme = () => {
+    //     if (theme === false) {
 
-            setTheme(true)
-        }
-        else {
-            setTheme(false)
-        }
-    }
+    //         setTheme(true)
+    //     }
+    //     else {
+    //         setTheme(false)
+    //     }
+    // }
 
     //Logout part
     const handleLogout = () => {
@@ -56,13 +56,13 @@ const Header = () => {
                             <Link className='text-decoration-none ms-3' to={'/faq'}>FAQ</Link>
                             <Link className='text-decoration-none ms-3' to={'/blogs'}>Blogs</Link>
                             {/* theme part */}
-                            {
+                            {/* {
 
                                 theme ?
                                     <Link onClick={handleTheme} className='text-decoration-none ms-3' href="#">light</Link>
                                     :
                                     <Link onClick={handleTheme} className='text-decoration-none ms-3' href="#">dark</Link>
-                            }
+                            } */}
                             {/* theme part end*/}
                         </Nav>
 
